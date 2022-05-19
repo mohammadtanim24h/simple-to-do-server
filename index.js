@@ -67,6 +67,10 @@ app.get("/", (req, res) => {
     res.send("Simple to do server is up and running");
 });
 
+app.get("/herokuTest", (req, res) => {
+    res.send("Working properly")
+})
+
 app.listen(port, () => {
     console.log("Listening to simple to do at port,", port);
 });

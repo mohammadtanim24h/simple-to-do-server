@@ -23,6 +23,14 @@ async function run() {
         console.log('db connected');
         const taskCollection = client.db("toDoApp").collection("tasks");
 
+        // get tasks of user
+        app.get("/task/:email", async (req, res) => {
+            const email = req.params.email;
+            const query = {email};
+            const tasks = await taskCollection.find(query).toArray();
+            res.send(tasks);
+        })
+
         // add a task
         app.post("/task", async (req, res) => {
             const task = req.body;
